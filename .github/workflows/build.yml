@@ -7,9 +7,9 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest]
-        build_type: [RelWithDebInfo, Debug]
-        ui: [gui, cli]
-        scripting: [lua, noscripts]
+        build_type: [RelWithDebInfo]
+        ui: [gui]
+        scripting: [lua]
         exclude:
           - build_type: Debug
             ui: gui
@@ -95,6 +95,13 @@ jobs:
       shell: bash
       run: |
         cd build && ninja
+    - uses: actions/upload-artifact@v3
+      with:
+        name: aseprite
+        path: |
+          libcrypto-1_1-x64.dll
+          D:/aseprite/aseprite/build/bin/data
+          D:/aseprite/aseprite/build/bin/aseprite.exe
     # - name: Running C++ Tests
     #   shell: bash
     #   run: |
