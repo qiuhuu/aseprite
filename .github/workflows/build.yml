@@ -92,6 +92,12 @@ jobs:
       shell: bash
       run: |
         cd build && ninja
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ matrix.os }}-${{ matrix.ui }}-${{ matrix.build_type }}-${{ matrix.scripting }}
+        path: |
+          build/bin/
     - name: Running C++ Tests
       shell: bash
       run: |
